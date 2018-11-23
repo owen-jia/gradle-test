@@ -1,6 +1,12 @@
-.idea
-.idea/*
+logs
+target
 build
-build/*
-.gradle
-.gradle/*
+/.idea
+/.idea_modules
+/.classpath
+/.gradle
+/.project
+/.settings
+/RUNNING_PID
+*.iml
+/.vscode
