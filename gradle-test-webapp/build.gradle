@@ -8,6 +8,7 @@ description '运行在tomcat中的Web项目构建，构建war包，如：gradle 
 
 dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'com.ts:gradle-test-dubbo-api:0.0.2'
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile 'org.mockito:mockito-core:2.7.19'

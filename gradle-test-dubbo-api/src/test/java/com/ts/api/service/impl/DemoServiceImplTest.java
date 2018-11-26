@@ -1,5 +1,6 @@
 package com.ts.api.service.impl;
 
+import com.ts.api.service.ICodeService;
 import org.junit.Test;
 
 /**
@@ -12,6 +13,8 @@ public class DemoServiceImplTest {
     public void test1(){
         DemoServiceImpl demoService = new DemoServiceImpl();
         demoService.justForTest(1010);
-        demoService.sendPhoneCode("15800001111");
+
+        ICodeService codeService = new CodeServiceImpl();
+        codeService.sendPhoneCode("15800001111");
     }
 }
