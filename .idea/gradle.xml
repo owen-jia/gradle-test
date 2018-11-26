@@ -9,6 +9,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/gradle-test-dubbo-api" />
+            <option value="$PROJECT_DIR$/gradle-test-java" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />

@@ -8,3 +8,6 @@
  */
 
 rootProject.name = 'gradle-test'
+include 'gradle-test-java'
+include 'gradle-test-dubbo-api'
+
