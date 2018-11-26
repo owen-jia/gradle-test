@@ -9,12 +9,11 @@
 plugins {
     id 'com.gradle.build-scan' version '1.16'
     id("base")
-    id 'war'
-    id 'org.gretty' version '2.2.0'
 }
 
 group = "com.ts"
 version = '0.0.1'
+description = "父项目例子，运行子项目例子：gradle :gradle-test-java:run"
 
 // 包服务器配置
 buildScan{
@@ -27,28 +26,29 @@ buildScan{
 }
 
 dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
-    compile 'com.google.guava:guava:23.0'
-    compile "com.ts:gradle-test:0.0.1"
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
-    // Use JUnit test framework
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.7.19'
 }
-
-
 
 allprojects {
     repositories {
-        // Use jcenter for resolving your dependencies.
-        // You can declare any Maven/Ivy/file repository here.
         jcenter()
     }
+
+    task("sayHello",{
+        doLast{ task -> println("i'am $task.project.name")}
+    })
 }
 
 subprojects {
     version '0.0.2'
+
+    task("hello1",{
+        doLast{ task -> println("i'am $task.project.name" + ",hello1")}
+    })
+}
+
+project(":gradle-test-java").task("hello2") {
+    doLast{ task -> println("i'am $task.project.name" + ",hello2")}
 }
 
 // 支持自定义任务copy任务

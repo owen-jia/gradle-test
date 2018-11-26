@@ -3,6 +3,7 @@ plugins {
 }
 
 group 'com.ts'
+description 'Api项目样例，测试gradle构建java-lib型项目的配置'
 
 sourceCompatibility = 1.8
 

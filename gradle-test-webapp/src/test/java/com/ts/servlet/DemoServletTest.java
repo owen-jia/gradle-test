@@ -1,8 +1,9 @@
-package com.ts.servlets;
+package com.ts.servlet;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 /**
  * @author: Owen Jia
@@ -34,7 +34,7 @@ public class DemoServletTest {
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
 
-        when(response.getWriter()).thenReturn(printWriter);
+        Mockito.when(response.getWriter()).thenReturn(printWriter);
 
         new DemoServlet().doGet(request, response);
 

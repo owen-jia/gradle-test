@@ -1,4 +1,4 @@
-package com.ts.servlets;
+package com.ts.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
