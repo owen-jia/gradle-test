@@ -1,9 +1,9 @@
 # Gradle Sample
-测试Gradle在项目中的使用，考虑在常规项目中实际运用的场景进行配置编辑
+测试Gradle在项目中的使用，考虑在常规项目实际运用的场景下进行配置编辑
 
 ## Gradle相关核心点
 
-- gradel父子项目中的结构
+- gradle父子项目中的结构
 - gradle在父子项目中配置继承特点
 - gradle自带提供的tasks测试
 - gradle如何自定义task编写
@@ -38,9 +38,11 @@ SpringBoot方式运行项目，并发布可执行jar方式部署
 ## 项目构建样例
 
 > 本地开发环境，window为例
+
 构建父项目  
 gradle clean
 
 > 自动化部署环境，linux为例
+
 单独构建子项目  
 gradle :gradle-test-java:run
