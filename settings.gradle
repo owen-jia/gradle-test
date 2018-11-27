@@ -11,4 +11,6 @@ rootProject.name = 'gradle-test'
 include 'gradle-test-java'
 include 'gradle-test-dubbo-api'
 include 'gradle-test-webapp'
+include 'gradle-test-jpa'
+include 'gradle-test-bootapp'
 

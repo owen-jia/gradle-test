@@ -12,3 +12,10 @@ build
 /RUNNING_PID
 *.iml
 /.vscode
+.classpath
+.project
+.settings
+rebel.xml
+.DS_Store
+/bin/
+.vscode/**/*

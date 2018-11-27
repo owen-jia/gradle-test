@@ -5,6 +5,17 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * user guide available at https://docs.gradle.org/4.10.2/userguide/tutorial_java_projects.html
  */
+//buildscript {
+//    ext {
+//        springBootVersion = '2.0.6.RELEASE'
+//    }
+//    repositories {
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.6.RELEASE")
+//    }
+//}
 
 plugins {
     id 'com.gradle.build-scan' version '1.16'
@@ -15,13 +26,10 @@ group = "com.ts"
 version = '0.0.1'
 description = "父项目例子，运行子项目例子：gradle :gradle-test-java:run"
 
-// 包服务器配置
 buildScan{
     termsOfServiceUrl = 'https://gradle.com/terms-of-service'
     termsOfServiceAgree = 'yes'
-////    搭建自己公司的gradle服务器
-////    server = "https://gradle-enterprise.mycompany.com"
-//    根据环境变量env来判断
+//    server = "https://gradle-enterprise.mycompany.com"
     publishAlwaysIf(System.getenv("env")=="local")
 }
 
@@ -32,6 +40,7 @@ dependencies {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
         maven {
             name 'isesol'
             url 'http://maven.isesoldev.com/content/groups/public/'
@@ -59,12 +68,10 @@ project(":gradle-test-java").task("hello2") {
     doLast{ task -> println("i'am $task.project.name" + ",hello2")}
 }
 
-// 支持自定义任务copy任务
 task copy(type:Copy, group: "Custome tasks",description: "Custome a Copy task"){
     from "src"
     into "desc"
 }
-// 测试自定义压缩zip任务
 task zip(type: Zip,group: "Custome tasks",description: "Custome a Zip task"){
     from "src"
     setArchivesBaseName "gradle-test"
