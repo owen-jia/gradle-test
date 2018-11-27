@@ -15,6 +15,10 @@
 
 ## 模块介绍
 
+> gradle-test
+
+父级模块，更多的是全局的配置，如respositry。同时测试了关于gradle scan的模式，scan也是gradle提供的一种全新的jar管理方案。
+
 > gradle-test-dubbo-api
 
 接口模块，通过maven的nexus方式发布管理公司内部jar；
