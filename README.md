@@ -1,6 +1,8 @@
 # Gradle Sample
 测试Gradle在项目中的使用，考虑在常规项目实际运用的场景下进行配置编辑
 
+> Gradle version 4.10.2
+
 ## Gradle相关核心点
 
 - gradle父子项目中的结构
@@ -66,3 +68,7 @@ gradle clean
 
 单独构建子项目  
 gradle :gradle-test-java:run
+
+## release history
+
+v1.0 第一版，比较稳定。
