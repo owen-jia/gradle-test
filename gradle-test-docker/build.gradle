@@ -1,16 +1,74 @@
-plugins {
-    id 'java'
-    id 'org.springframework.boot' version "2.0.6.RELEASE"
+buildscript {
+    ext{
+        springBootVersion = '2.0.6.RELEASE'
+    }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:2.0.6.RELEASE')
+        classpath("se.transmode.gradle:gradle-docker:1.2")
+    }
 }
 
+//plugins {
+//    id 'java'
+//    id 'application'
+//    id 'docker'
+//    id 'org.springframework.boot' version "2.0.6.RELEASE"
+//    id 'io.spring.dependency-management'
+//}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+apply plugin: 'docker'
+
 group 'com.ts'
+version = '0.0.1'
 description '使用springBoot方式启动，采用docker方式部署服务'
 
+mainClassName = 'com.ts.docker.DockerApp'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
     compile("org.springframework.boot:spring-boot-starter-web:2.0.6.RELEASE")
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
+    compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.0.6.RELEASE', ext: 'pom'
+}
+
+jar {
+    baseName 'gradle-test-docker'
+    version "0.0.1"
+}
+
+// 采用distDocker task构建docker image
+distDocker {
+    baseImage 'openjdk'
+    maintainer 'Owen Jia'
+    push false
+}
+
+//自定义task构建image
+task dockerBuilder(type: Docker) {
+    push = false
+    baseImage 'openjdk:8'
+    maintainer 'Owen Jia'
+    applicationName = jar.baseName
+    tagVersion = jar.version
+    volume('/tmp')
+    addFile("${jar.baseName}-${jar.version}.jar", "/data/app.jar")
+    workingDir('/data/')
+    entryPoint(["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", './app.jar'])
+    exposePort(8080)
+//    dockerfile = file('Dockerfile') #指向固定的Docker配置文件，位于根目录下
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
 }
