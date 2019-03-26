@@ -54,7 +54,18 @@ SpringBoot方式运行项目，并发布可执行jar方式部署。
 执行命令：gradlew :gradle-test-bootapp:bootJar可以生成可执行jar，包在build/lib/目录下。   
 执行命令：gradlew :gradle-test-bootapp:bootRun或直接java run main class启动项目，本地测试。   
 
-*亮点：*   
+> gradle-test-docker
+
+SpringBoot Fat Jar is base to Run Project. Set a sample for docker to build a base image.
+
+we used plugins:
+- spring-boot-gradle-plugin:2.0.6.RELEASE
+- gradle-docker:1.2
+
+You can use Gradle task docker/distdocker or custom dockerBuild to build a image, to see gradle-test-docker/build.gradle for more.
+
+
+**亮点：**   
 gradle scan 的jar包管理模式也是很不错的，值得推荐特别是开源类型jar。
 
 ## 项目构建样例
