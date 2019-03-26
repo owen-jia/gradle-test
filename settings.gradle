@@ -13,4 +13,6 @@ include 'gradle-test-dubbo-api'
 include 'gradle-test-webapp'
 include 'gradle-test-jpa'
 include 'gradle-test-bootapp'
+include 'gradle-test-docker'
+include 'gradle-test-docker'
 
