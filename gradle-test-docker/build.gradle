@@ -62,7 +62,7 @@ task dockerBuilder(type: Docker) {
     volume('/tmp')
     addFile("${jar.baseName}-${jar.version}.jar", "/data/app.jar")
     workingDir('/data/')
-    entryPoint(["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", './app.jar'])
+    entryPoint(["java", "-Denv=qa", "-jar", './app.jar'])
     exposePort(8080)
 //    dockerfile = file('Dockerfile') #指向固定的Docker配置文件，位于根目录下
     doFirst {
